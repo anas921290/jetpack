@@ -53,8 +53,7 @@
 		</testsuite>
 		<testsuite name="sync">
 			<directory prefix="test_" suffix=".php">tests/php/sync</directory>
-			<exclude>tests/php/sync/test_class.jetpack-sync-full-immediately.php</exclude>
-		</testsuite>
+s		</testsuite>
 		<testsuite name="uninstall">
 			<directory prefix="test_" suffix=".php">php/uninstall</directory>
 		</testsuite>
