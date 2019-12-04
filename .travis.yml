@@ -48,9 +48,9 @@ matrix:
     env: WP_TRAVISCI="yarn test-spelling"
   - php: "nightly"
     name: "PHP Nightly"
-  - php: "7.4snapshot"
+  - php: "7.4"
     env: WP_BRANCH=master SIMPLE_AND_MULTISITE=1
-    # add a new entry for "latest" WP once 5.3 has shipped. Remove snapshot once 7.4 is GA.
+    # add a new entry for "latest" WP once 5.3 has shipped.
 
   # Code Climate code coverage.
   - php: "7.3"
