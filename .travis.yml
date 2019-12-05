@@ -50,7 +50,9 @@ matrix:
     name: "PHP Nightly"
   - php: "7.4"
     env: WP_BRANCH=master SIMPLE_AND_MULTISITE=1
-    # add a new entry for "latest" WP once 5.3 has shipped.
+  - php: "7.4"
+    env: WP_BRANCH=latest
+    # When WP 5.4 is released, remove the two 7.4 items above and enable 7.4 at line 15.
 
   # Code Climate code coverage.
   - php: "7.3"
