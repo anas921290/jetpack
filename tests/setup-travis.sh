@@ -15,6 +15,9 @@ elif [[ ${TRAVIS_PHP_VERSION:0:3} == "7.0" ]]; then
   composer remove sirbrillig/phpcs-changed --dev
   composer install
 	composer global require "phpunit/phpunit=5.7.*" --no-suggest
+elif [[ ${TRAVIS_PHP_VERSION:0:3} == "7.4" ]]; then
+	composer install
+	composer global require "phpunit/phpunit=7.*" --no-suggest
 elif [[ ${TRAVIS_PHP_VERSION:0:2} == "7." ]]; then
   composer install
   composer global require "phpunit/phpunit=5.7.*" --no-suggest

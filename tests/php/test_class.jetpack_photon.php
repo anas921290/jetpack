@@ -1063,7 +1063,6 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 		$this->assertArrayHasKey( 'media_details', $data );
 		$this->assertArrayHasKey( 'sizes', $data['media_details'] );
 		$this->assertArrayHasKey( 'full', $data['media_details']['sizes'] );
-		var_dump( $data );
 		$this->assertArrayHasKey( 'medium_large', $data['media_details']['sizes'] );
 		$this->assertArrayHasKey( 'source_url', $data['media_details']['sizes']['full'] );
 		$this->assertArrayHasKey( 'source_url', $data['media_details']['sizes']['medium_large'] );
