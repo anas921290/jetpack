@@ -12,9 +12,6 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 		global $content_width;
 		$this->_globals['content_width'] = $content_width;
 
-		// Disable the big image threshold added in WordPress 5.3.
-		add_filter( 'big_image_size_threshold', '__return_false' );
-
 		// Setup the Photon filters.
 		// WP_UnitTestCase resets the action/filter state after
 		// every test:
@@ -25,14 +22,6 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 	}
 
 	public function tearDown() {
-		// Re-enable the big image threshold added in WordPress 5.3.
-		add_filter(
-			'big_image_size_threshold',
-			function() {
-				return 2560;
-			}
-		);
-
 		// Restoring global variables
 		global $content_width;
 		$content_width = $this->_globals['content_width'];
@@ -69,6 +58,10 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 		elseif ( 'medium' == $size ) { // 1024x768
 			$filename = dirname( __FILE__ ) . '/modules/photon/sample-content/test-image-medium.png';
 		}
+
+		// Add a new full size.
+		add_image_size( 'full', 2560, 2560, false );
+
 		// Add sizes that exist before uploading the file.
 		add_image_size( 'jetpack_soft_defined', 700, 500, false ); // Intentionally not a 1.33333 ratio.
 		add_image_size( 'jetpack_soft_undefined', 700, 99999, false );
@@ -94,6 +87,7 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 	}
 
 	protected function _remove_image_sizes(){
+		remove_image_size( 'full' );
 		remove_image_size( 'jetpack_soft_defined' );
 		remove_image_size( 'jetpack_soft_undefined' );
 		remove_image_size( 'jetpack_soft_undefined_zero' );
