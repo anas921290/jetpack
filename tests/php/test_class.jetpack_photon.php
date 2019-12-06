@@ -12,6 +12,9 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 		global $content_width;
 		$this->_globals['content_width'] = $content_width;
 
+		// Disable the big image threshold added in WordPress 5.3.
+		add_filter( 'big_image_size_threshold', '__return_false' );
+
 		// Setup the Photon filters.
 		// WP_UnitTestCase resets the action/filter state after
 		// every test:
@@ -22,6 +25,14 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 	}
 
 	public function tearDown() {
+		// Re-enable the big image threshold added in WordPress 5.3.
+		add_filter(
+			'big_image_size_threshold',
+			function() {
+				return 2560;
+			}
+		);
+
 		// Restoring global variables
 		global $content_width;
 		$content_width = $this->_globals['content_width'];
