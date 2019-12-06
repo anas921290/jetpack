@@ -59,9 +59,6 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 			$filename = dirname( __FILE__ ) . '/modules/photon/sample-content/test-image-medium.png';
 		}
 
-		// Add a new full size.
-		add_image_size( 'full', 2560, 2560, false );
-
 		// Add sizes that exist before uploading the file.
 		add_image_size( 'jetpack_soft_defined', 700, 500, false ); // Intentionally not a 1.33333 ratio.
 		add_image_size( 'jetpack_soft_undefined', 700, 99999, false );
@@ -87,7 +84,6 @@ class WP_Test_Jetpack_Photon extends Jetpack_Attachment_Test_Case {
 	}
 
 	protected function _remove_image_sizes(){
-		remove_image_size( 'full' );
 		remove_image_size( 'jetpack_soft_defined' );
 		remove_image_size( 'jetpack_soft_undefined' );
 		remove_image_size( 'jetpack_soft_undefined_zero' );
